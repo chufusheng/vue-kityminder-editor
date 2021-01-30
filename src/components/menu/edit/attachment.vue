@@ -1,7 +1,7 @@
 <template lang="">
 <div class="attachment-group">
-  <div class="link ">
-    <el-button class="tab-icons insert" @click="showOverlay"></el-button>
+  <div class="link">
+    <el-button class="tab-icons insert" @click="dialogFormVisible = true" ></el-button>
     <el-dropdown trigger="click">
       <span class="el-dropdown-link">
         链接
@@ -14,7 +14,7 @@
     </el-dropdown>
   </div>
   <div class="img">
-    <el-button class="tab-icons insert" @click="showOverlay"></el-button>
+    <el-button class="tab-icons insert" @click="dialogFormVisible = true" ></el-button>
     <el-dropdown trigger="click">
       <span class="el-dropdown-link">
         图片
@@ -39,6 +39,25 @@
       </el-dropdown-menu>
     </el-dropdown>
   </div>
+
+  <el-dialog title="收货地址" :visible.sync="dialogFormVisible">
+     <el-tabs class="attachment-group-tabs" v-model="activeName" @tab-click="handleClick">
+    <el-tab-pane label="用户管理" name="first">用户管理</el-tab-pane>
+    <el-tab-pane label="配置管理" name="second">
+      <el-form :model="form">
+    <el-form-item label="活动名称" :label-width="formLabelWidth">
+      <el-input v-model="form.name" autocomplete="off"></el-input>
+    </el-form-item>
+    <el-form-item label="活动区域" :label-width="formLabelWidth">
+      <el-select v-model="form.region" placeholder="请选择活动区域">
+              <el-option label="区域一" value="shanghai"></el-option>
+        <el-option label="区域二" value="beijing"></el-option>
+      </el-select>
+    </el-form-item>
+  </el-form>
+    </el-tab-pane>
+  </el-tabs>
+  </el-dialog>
 </div>
 </template>
 
@@ -75,7 +94,21 @@ export default {
       }],
       value1: '',
       value2: '',
-      value3: ''
+      value3: '',
+      dialogTableVisible: false,
+      dialogFormVisible: false,
+      form: {
+        name: "",
+        region: "",
+        date1: "",
+        date2: "",
+        delivery: false,
+        type: [],
+        resource: "",
+        desc: "",
+      },
+      formLabelWidth: "120px",
+      activeName: "second",
     }
   },
   computed: {
@@ -115,6 +148,9 @@ export default {
           }
         }
       }).then(action => {});
+    },
+     handleClick(tab, event) {
+      console.log(tab, event);
     },
   }
 }

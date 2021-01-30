@@ -1,13 +1,14 @@
 <template lang="html">
 <div class="menu-container">
-  <expand></expand>
-  <selection></selection>
+ 
   <insert-box></insert-box>
   <move-box></move-box>
   <edit-del></edit-del>
-  <imageAndLink></imageAndLink>
+  <attachment></attachment>
   <sequence-box></sequence-box>
   <progress-box></progress-box>
+   <expand></expand>
+  <selection></selection>
   <div class='menu-button'>  
     <el-button type="primary" @click="save" size="medium">保存</el-button>
   </div>
@@ -23,6 +24,7 @@ import sequenceBox from "./sequenceBox";
 import progressBox from "./progressBox";
 import expand from "./expand";
 import selection from "./selection";
+import attachment from './attachment'
 
 export default {
   name: "editMenu",
@@ -34,7 +36,8 @@ export default {
     progressBox,
     expand,
     selection,
-    imageAndLink
+    imageAndLink,
+    attachment
   },
   methods: {
     save: function () {

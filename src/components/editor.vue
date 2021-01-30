@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
     <header-menu></header-menu>
-    <main-editor ref="child" ></main-editor>
+    <main-editor ref="child"></main-editor>
     <navigator></navigator>
   </div>
 </template>
@@ -17,11 +17,11 @@ export default {
     headerMenu,
     mainEditor,
     navigator,
-  },        methods: {
-            save(){
-                this.$refs.child.savesave();
-            }
-        }
-
+  },
+  methods: {
+    save() {
+      this.$refs.child.savesave();
+    },
+  },
 };
 </script>

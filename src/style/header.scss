@@ -183,6 +183,7 @@ header {
     i.edit-image-icon {
       background: url(/static/minder/icons.png) no-repeat center -125px;
     }
+
     i.edit-link-icon {
       background: url(/static/minder/icons.png) no-repeat center -103px;
     }
@@ -195,6 +196,15 @@ header {
     .el-dropdown-link {
       font-size: 12px;
     }
+
+    .el-dialog__body {
+      padding   : 15px;
+      color     : #606266;
+      font-size : 14px;
+      word-break: break-all;
+      height    : 300px;
+    }
+
 
     button {
       font-size          : inherit;
@@ -215,13 +225,23 @@ header {
       background-color: $btn-hover-color;
     }
 
-    &>div {
-      font-size: inherit;
-      flex-wrap: wrap;
-      width    : 60px;
-      height   : 100%;
+    .link {
+
+      font-size   : inherit;
+      flex-wrap   : wrap;
+      width       : 60px;
+      // height   : 100%;
       @include flexcenter;
+
     }
+
+    // &>div {
+    //   font-size: inherit;
+    //   flex-wrap: wrap;
+    //   width    : 60px;
+    //   // height   : 100%;
+    //   @include flexcenter;
+    // }
 
     .insert {
       height           : 25px;
@@ -355,6 +375,27 @@ header {
       background-position: 0 -150px;
     }
   }
+
+
+  .image-link-group {
+    width: 65px;
+
+    .image {
+      flex-wrap: wrap;
+      @include flexcenter;
+
+      .tab-icons {
+        display            : inline-block;
+        width              : 25px;
+        height             : 25px;
+        margin             : 0;
+        background-repeat  : no-repeat;
+        background-position: 0 -125px;
+      }
+    }
+
+  }
+
 
   .style-group {
     width: 150px;
