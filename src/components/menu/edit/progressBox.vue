@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     execCommand(index) {
-      this.commandDisabled || this.minder.execCommand('image', "https://static.oschina.net/uploads/logo/angular_kcdXQ.png")
+      this.commandDisabled || this.minder.execCommand('progress', index)
     },
     classArray(index) {
       var isActive = this.minder.queryCommandValue && this.minder.queryCommandValue('progress') == index;

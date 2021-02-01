@@ -8,6 +8,10 @@ export const state = {
     draging: false
   },
   callbackQueue: [],
+  imageObj: {
+    imageUrl: '',
+    imageTitle: ''
+  },
   config: {
     // 右侧面板最小宽度
     ctrlPanelMin: 250,

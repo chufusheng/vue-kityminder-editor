@@ -79,7 +79,6 @@ export default {
   methods: {
     handleCommand(command) {
       this.current_theme = command;
-      console.log();
       this.minder.execCommand("theme", command);
     },
     getThemeThumbStyle(theme) {

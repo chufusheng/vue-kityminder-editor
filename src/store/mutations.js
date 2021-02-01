@@ -32,6 +32,13 @@ export const mutations = {
     state.callbackQueue.push(callback);
   },
 
+  setImageUrl(state,imageUrl){
+    state.imageObj["imageUrl"]=imageUrl
+  },
+  setImageTitle(state,imageTitle){
+    state.imageObj["imageTitle"]=imageTitle
+  },
+
   setConfig(state) {
     var supported = Object.keys(state.config);
     var configObj = {};
