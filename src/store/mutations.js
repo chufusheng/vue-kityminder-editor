@@ -32,11 +32,15 @@ export const mutations = {
     state.callbackQueue.push(callback);
   },
 
-  setImageUrl(state,imageUrl){
-    state.imageObj["imageUrl"]=imageUrl
+  setImageUrl(state, imageUrl) {
+    state.imageObj["imageUrl"] = imageUrl
   },
-  setImageTitle(state,imageTitle){
-    state.imageObj["imageTitle"]=imageTitle
+  setImageTitle(state, imageTitle) {
+    state.imageObj["imageTitle"] = imageTitle
+  },
+
+  setSwitchShow(state, swithcShowObj) {
+    state.switchShow = swithcShowObj
   },
 
   setConfig(state) {

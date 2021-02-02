@@ -12,6 +12,8 @@ export const state = {
     imageUrl: '',
     imageTitle: ''
   },
+  switchShow: {},
+
   config: {
     // 右侧面板最小宽度
     ctrlPanelMin: 250,

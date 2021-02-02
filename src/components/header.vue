@@ -20,38 +20,40 @@
 </template>
 
 <script>
-import editMenu from "./menu/edit/editMenu";
-import viewMenu from "./menu/view/viewMenu";
+import editMenu from './menu/edit/editMenu';
+import viewMenu from './menu/view/viewMenu';
 export default {
-  name: "headerVue",
-  data() {
-    return {
-      switchShow: {
-        showEditMenu: true,
-        showViewMenu: false,
-      },
-    };
-  },
-  components: {
-    editMenu,
-    viewMenu,
-  },
-  methods: {
-    showMenu: function (e) {
-      for (var variable in this.switchShow) {
-        if (this.switchShow.hasOwnProperty(variable)) {
-          this.switchShow[variable] = false;
-        }
-      }
-      this["switchShow"][e.target.className.replace("btn-", "")] = true;
-    },
-    save: function () {
-      this.$parent.save();
-    },
-  },
+	name: 'headerVue',
+	data() {
+		return {
+			switchShow: {
+				showEditMenu: true,
+				showViewMenu: false,
+			},
+		};
+	},
+	components: {
+		editMenu,
+		viewMenu,
+	},
+	methods: {
+		showMenu: function (e) {
+			for (var variable in this.switchShow) {
+				if (this.switchShow.hasOwnProperty(variable)) {
+					this.switchShow[variable] = false;
+				}
+			}
+			this['switchShow'][e.target.className.replace('btn-', '')] = true;
+      this.$store.commit('setSwitchShow', this.switchShow);
+      console.log('ddddddd'+JSON.stringify(this.$store.state.switchShow['showViewMenu']))
+		},
+		save: function () {
+			this.$parent.save();
+		},
+	},
 };
 </script>
 
 <style lang="scss">
-@import "../style/header.scss";
+@import '../style/header.scss';
 </style>

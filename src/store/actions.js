@@ -39,14 +39,17 @@ export const actions = {
     commit
   }) => commit('registerEvent', callback),
 
-  setImageUrl({commit}){
-    commit('setImageUrl',imageUrl)
+  setImageUrl({ commit }) {
+    commit('setImageUrl', imageUrl)
   },
 
-  setImageTitle({commit}){
-    commit('setImageTitle',imageTile)
+  setImageTitle({ commit }) {
+    commit('setImageTitle', imageTile)
   },
 
+  setSwitchShow(commit) {
+    commit('setSwitchShow', swithcShowObj)
+  },
 
   executeCallback({
     commit,

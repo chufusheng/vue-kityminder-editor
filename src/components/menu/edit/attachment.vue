@@ -60,7 +60,7 @@
           <el-row>
               <el-col :span="20">
                 <el-form-item label="图片预览:" :label-width="formLabelWidth">
-                  <img  style="width:100px;height:100px" :src="this.$store.state.imageObj.imageUrl"   :error="errorImg" :key="this.$store.state.imageObj.imageTitle"  :preview-text="this.$store.state.imageObj.imageTitle">
+                  <img  style="width:100px;height:100px" :src="this.$store.state.imageObj.imageUrl"  :key="this.$store.state.imageObj.imageTitle"  :preview-text="this.$store.state.imageObj.imageTitle">
                 </el-form-item>
                 </el-col>
           </el-row>
@@ -144,13 +144,12 @@ export default {
 				url: this.$store.state.imageObj.imageUrl,
 				title: this.$store.state.imageObj.imageTitle,
 			},
-			errorImg:
-				'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+
 			linkFormVisible: false,
 			imageFormVisible: false,
 			noteVisible: false,
 			direction: 'rtl',
-      note: '',
+			note: '',
 			form: {
 				name: '',
 				imageUrl: '',
@@ -176,22 +175,42 @@ export default {
 		}),
 		commandDisabled() {
 			var minder = this.minder;
-			try {
-				this.note = minder.queryCommandValue('note');
-				if (this.note != '' && this.note != undefined) {
-					this.noteVisible = true;
+
+			if (!this.$store.state.switchShow['showViewMenu']) {
+				try {
+					this.note = '';
+					this.note = minder.queryCommandValue('note');
+					console.log('note' + this.note);
+					if (
+						this.note != '' &&
+						this.note != undefined &&
+						this.note != null
+					) {
+						this.noteVisible = true;
+					}
+				} catch (e) {
+					console.log(e);
 				}
-			}catch(e){
-        console.log(e)
-      }
+			}
+
+			var previewTimer;
+			minder.on &&
+				minder.on('shownoterequest', function (e) {
+					previewTimer = setTimeout(function () {
+						this.preview(e.node, e.keyword);
+					}, 300);
+				});
+			minder.on &&
+				minder.on('hidenoterequest', function () {
+					clearTimeout(previewTimer);
+
+					// scope.showNotePreviewer = false;
+					//scope.$apply();
+				});
+
 			minder.on &&
 				minder.on('interactchange', function () {
 					this.commandValue = minder.queryCommandValue('priority');
-					// this.note = minder.queryCommandValue('note');
-					// if (this.note != '' && this.note != undefined) {
-					//   console.log(this.note)
-					// 	this.noteVisible = true;
-					// }
 				});
 			return (
 				minder.queryCommandState &&
@@ -257,7 +276,10 @@ export default {
 			this.form.linkTitle = '';
 		},
 		handleClose(done) {
-			if (this.$refs.note.value != '' && this.$refs.note.value != undefined) {
+			if (
+				this.$refs.note.value != '' &&
+				this.$refs.note.value != undefined
+			) {
 				this.minder.execCommand('note', this.$refs.note.value);
 			}
 			done();
@@ -266,6 +288,21 @@ export default {
 			// 			done();
 			// 		})
 			// 		.catch((_) => {});
+		},
+		preview(node, keyword) {
+			var icon = node.getRenderer('NoteIconRenderer').getRenderShape();
+			var b = icon.getRenderBox('screen');
+			var note = node.getData('note');
+
+			var html = marked(note);
+			if (keyword) {
+				html = html.replace(
+					new RegExp('(' + keyword + ')', 'ig'),
+					'<span class="highlight">$1</span>'
+				);
+
+				console.log(html);
+			}
 		},
 	},
 };

@@ -63,12 +63,12 @@ header {
     height : inherit;
 
     &>div {
-      display     : inline-flex;
-      overflow    : hidden;
-      align-items : center;
-      flex-wrap   : wrap;
-      height      : 100%;
-      border-right: 1px dashed #eee;
+      display        : inline-flex;
+      overflow       : hidden;
+      align-items    : center;
+      flex-wrap      : wrap;
+      // height      : 100%;
+      border-right   : 1px dashed #eee;
     }
 
     .el-icon-arrow-up:before {
@@ -76,18 +76,31 @@ header {
       display: inline-block
     }
 
-    //   i {
-    //     display: inline-block;
-    //     width: auto;
-    //     height: 20px;
-    // }
-
     &>div:last-of-type {
       border-right: none;
     }
   }
 
 
+  .custom-box-group {
+    width  : 135px;
+    padding: 5px 5px 5px;
+
+    .input-with-select {
+
+      .el-input-group__prepend .el-input__inner {
+        background-color: #fff;
+        height          : 26px;
+      }
+      .el-button {
+        padding: 0px;
+      }
+      .el-input__inner {
+        height: 25px;
+        padding: 0px;
+      }
+    }
+  }
 
 
   .menu-btn {
@@ -195,12 +208,13 @@ header {
 
     .note-drawer {
       .el-drawer__header {
-        font-size: 20px;
-        padding  : 20px 20px 20px;
+        font-size    : 20px;
+        padding      : 20px 20px 20px;
         margin-bottom: 0px;
-        background: #e1e1e1;
+        background   : #e1e1e1;
       }
-      .note-drawer-text{
+
+      .note-drawer-text {
         font-size: 18px;
       }
     }
@@ -411,27 +425,6 @@ header {
     }
   }
 
-
-  .image-link-group {
-    width: 65px;
-
-    .image {
-      flex-wrap: wrap;
-      @include flexcenter;
-
-      .tab-icons {
-        display            : inline-block;
-        width              : 25px;
-        height             : 25px;
-        margin             : 0;
-        background-repeat  : no-repeat;
-        background-position: 0 -125px;
-      }
-    }
-
-  }
-
-
   .style-group {
     width: 150px;
 
@@ -474,8 +467,8 @@ header {
   }
 
   .font-group {
-    width: 250px;
-
+    width: 180px;
+    padding: 6px;
     * {
       font-size: 12px;
     }
@@ -486,7 +479,7 @@ header {
 
     .font-family-select {
       input {
-        width: 150px;
+        width: 100px;
       }
 
       .el-input__suffix {
@@ -496,7 +489,7 @@ header {
 
     .font-size-select {
       input {
-        width: 80px;
+        width: 70px;
       }
 
       .el-input__suffix {
