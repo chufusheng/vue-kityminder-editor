@@ -14,6 +14,8 @@ export const state = {
   },
   switchShow: {},
 
+  usedResource :[],
+
   config: {
     // 右侧面板最小宽度
     ctrlPanelMin: 250,

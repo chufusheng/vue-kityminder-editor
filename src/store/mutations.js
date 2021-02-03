@@ -43,6 +43,10 @@ export const mutations = {
     state.switchShow = swithcShowObj
   },
 
+  setUsedResource(state, usedResObj) {
+    state.usedResource = usedResObj
+  },
+
   setConfig(state) {
     var supported = Object.keys(state.config);
     var configObj = {};

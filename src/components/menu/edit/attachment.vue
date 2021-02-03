@@ -179,8 +179,7 @@ export default {
 			if (!this.$store.state.switchShow['showViewMenu']) {
 				try {
 					this.note = '';
-					this.note = minder.queryCommandValue('note');
-					console.log('note' + this.note);
+					this.note = this.minder.queryCommandValue('note');
 					if (
 						this.note != '' &&
 						this.note != undefined &&
@@ -193,25 +192,6 @@ export default {
 				}
 			}
 
-			var previewTimer;
-			minder.on &&
-				minder.on('shownoterequest', function (e) {
-					previewTimer = setTimeout(function () {
-						this.preview(e.node, e.keyword);
-					}, 300);
-				});
-			minder.on &&
-				minder.on('hidenoterequest', function () {
-					clearTimeout(previewTimer);
-
-					// scope.showNotePreviewer = false;
-					//scope.$apply();
-				});
-
-			minder.on &&
-				minder.on('interactchange', function () {
-					this.commandValue = minder.queryCommandValue('priority');
-				});
 			return (
 				minder.queryCommandState &&
 				minder.queryCommandState('priority') === -1
@@ -244,7 +224,7 @@ export default {
 						done();
 					}
 				},
-			}).then((action) => {});
+			}).then((action) => { });
 		},
 		handleClick(tab, event) {
 			console.log(tab, event);

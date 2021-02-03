@@ -88,15 +88,31 @@ header {
 
     .input-with-select {
 
+      .el-select__tags {
+        width       : 100%;
+        /* max-width: 103px; */
+      }
+
+      .input-with-select-button {
+        padding: 4px 10px;
+      }
+
+      .el-tag--small {
+        height     : 18px;
+        line-height: 13px;
+      }
+
       .el-input-group__prepend .el-input__inner {
         background-color: #fff;
         height          : 26px;
       }
+
       .el-button {
         padding: 0px;
       }
+
       .el-input__inner {
-        height: 25px;
+        height : 25px;
         padding: 0px;
       }
     }
@@ -467,8 +483,9 @@ header {
   }
 
   .font-group {
-    width: 180px;
+    width  : 180px;
     padding: 6px;
+
     * {
       font-size: 12px;
     }

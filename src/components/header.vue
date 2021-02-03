@@ -45,7 +45,6 @@ export default {
 			}
 			this['switchShow'][e.target.className.replace('btn-', '')] = true;
       this.$store.commit('setSwitchShow', this.switchShow);
-      console.log('ddddddd'+JSON.stringify(this.$store.state.switchShow['showViewMenu']))
 		},
 		save: function () {
 			this.$parent.save();

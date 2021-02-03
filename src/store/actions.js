@@ -47,6 +47,10 @@ export const actions = {
     commit('setImageTitle', imageTile)
   },
 
+  setUsedResource({commit}) {
+    commit('setUsedResource', usedResObj)
+  },
+
   setSwitchShow(commit) {
     commit('setSwitchShow', swithcShowObj)
   },
