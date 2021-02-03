@@ -2,6 +2,7 @@
 
 > 在[百度脑图](https://github.com/fex-team/kityminder-core)的基础上修改：
 
+kityminder-core [文档] (https://github.com/fex-team/kityminder-core/wiki/command#resource)
 ## Build Setup
 
 ``` bash
