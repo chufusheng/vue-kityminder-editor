@@ -47,7 +47,7 @@ export const actions = {
     commit('setImageTitle', imageTile)
   },
 
-  setUsedResource({commit}) {
+  setUsedResource({ commit }) {
     commit('setUsedResource', usedResObj)
   },
 
@@ -55,6 +55,9 @@ export const actions = {
     commit('setSwitchShow', swithcShowObj)
   },
 
+  setTheme(commit) {
+    commit('setTheme', theme)
+  },
   executeCallback({
     commit,
     state

@@ -44,7 +44,7 @@ export default {
 				}
 			}
 			this['switchShow'][e.target.className.replace('btn-', '')] = true;
-      this.$store.commit('setSwitchShow', this.switchShow);
+			this.$store.commit('setSwitchShow', this.switchShow);
 		},
 		save: function () {
 			this.$parent.save();
