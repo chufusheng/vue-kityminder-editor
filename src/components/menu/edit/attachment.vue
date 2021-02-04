@@ -156,13 +156,6 @@ export default {
 				imageTitle: '',
 				linkUrl: '',
 				linkTitle: '',
-				region: '',
-				date1: '',
-				date2: '',
-				delivery: false,
-				type: [],
-				resource: '',
-				desc: '',
 			},
 			formLabelWidth: '120px',
 			activeName: 'first',
@@ -175,10 +168,8 @@ export default {
 		}),
 		commandDisabled() {
 			var minder = this.minder;
-
 			if (!this.$store.state.switchShow['showViewMenu']) {
 				try {
-					this.note = '';
 					this.note = this.minder.queryCommandValue('note');
 					if (
 						this.note != '' &&
@@ -186,12 +177,12 @@ export default {
 						this.note != null
 					) {
 						this.noteVisible = true;
+						this.$refs.note.value = this.minder.queryCommandValue('note');
 					}
 				} catch (e) {
 					console.log(e);
 				}
 			}
-
 			return (
 				minder.queryCommandState &&
 				minder.queryCommandState('priority') === -1
@@ -202,29 +193,6 @@ export default {
 		...mapActions(['changeCount', 'increment', 'clearMemory', 'setMemory']),
 		test(key, value) {
 			this.clearMemory(key, value);
-		},
-		showOverlay() {
-			this.$msgbox({
-				title: '输入',
-				message: '暂时未实现，敬请期待！',
-				showCancelButton: true,
-				confirmButtonText: '确定',
-				cancelButtonText: '取消',
-				beforeClose: (action, instance, done) => {
-					if (action === 'confirm') {
-						instance.confirmButtonLoading = true;
-						instance.confirmButtonText = '执行中...';
-						setTimeout(() => {
-							done();
-							setTimeout(() => {
-								instance.confirmButtonLoading = false;
-							}, 300);
-						}, 3000);
-					} else {
-						done();
-					}
-				},
-			}).then((action) => { });
 		},
 		handleClick(tab, event) {
 			console.log(tab, event);
@@ -255,6 +223,10 @@ export default {
 			this.form.linkUrl = '';
 			this.form.linkTitle = '';
 		},
+		openDrawer() {
+			// this.$refs.note.value = this.minder.queryCommandValue('note');
+		},
+
 		handleClose(done) {
 			if (
 				this.$refs.note.value != '' &&
@@ -263,11 +235,6 @@ export default {
 				this.minder.execCommand('note', this.$refs.note.value);
 			}
 			done();
-			// 	this.$confirm('确认关闭？')
-			// 		.then((_) => {
-			// 			done();
-			// 		})
-			// 		.catch((_) => {});
 		},
 		preview(node, keyword) {
 			var icon = node.getRenderer('NoteIconRenderer').getRenderShape();
